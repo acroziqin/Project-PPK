@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <link rel="stylesheet" href="jquery/jquery.mobile-1.4.5.min.css" />
+  <script src="jquery/jquery.min.js"></script>
+  <script src="jquery/jquery.mobile-1.4.5.min.js"></script>
+  <title>Blank App</title>
+  <style>
+    .container{
+      text-align: center;
+      background-color: red;
+      color: white;
+      padding: 10px 0;
+    }
+    .headline {
+      max-width: 100%;
+    }
+    .tanggal {
+      margin-top: -5px;
+      margin-right: 5px;
+      text-align: right;
+    }
+    .keterangan {
+      margin: auto 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <!--Menu yang digunakan untuk memanggil panel widget yang id-nya "nav-panel"-->
+  <h3><a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a></h3>
+  <!--Panel yang muncul ketika menunya diklik-->
+  <div data-role="panel" data-position-fixed="true" data-display="push" data-theme="b" id="nav-panel">
+    <ul data-role="listview">
+      <!--Jika ditekan akan menutup panel widget-->
+      <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+      <li><a href="member.html">Member</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </div>
+  <h3 class="container">Timeline Buku Angkatan Teknik Informatika</h3>
+  <img class="headline" src="img/1.jpg" alt="">
+  <p class="tanggal">Minggu, 22 Oktober 2017</p>
+  <p class="keterangan">ini post pertama</p>
+  
+  <script type="text/javascript" src="cordova.js"></script>
+  <script>
+    $("#mypanel").trigger("updatelayout");
+  </script>
+
+</body>
+
+</html>
