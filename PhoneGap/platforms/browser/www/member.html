@@ -7,11 +7,84 @@
   <link rel="stylesheet" href="jquery/jquery.mobile-1.4.5.min.css" />
   <script src="jquery/jquery.min.js"></script>
   <script src="jquery/jquery.mobile-1.4.5.min.js"></script>
-  <title>Blank App</title>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var url = "http://localhost/project_ppk/jsonMember.php";
+      $.getJSON(url, function(result) {
+        console.log(result);
+        $.each(result, function(i, field) {
+          var foto = field.foto;
+          var username = field.username;
+          var nim = field.nim;
+          var ttl = field.tgl_lahir;
+          var coba = "Mencoba";
+          $("#profil").append("<div class='prflMmbr'><img class='fotoMmbr' src='img/" + foto + "'><div class='nama'>" + username + "</div><div class='nim'>" + nim + "</div><div class='ttl'>" + ttl + "</div></div>");
+        });
+      });
+    });
+  </script>
+
+  <title>Member</title>
+  <style>
+    .container {
+      text-align: center;
+      background-color: red;
+      color: white;
+      padding: 10px 0;
+    }
+
+    .prflMmbr {
+      border: 1px solid black;
+      position: relative;
+      min-height: 1px;
+      /*
+      padding-right: 15px;
+      padding-left: 15px;
+*/
+      margin: 2px;
+      width: 32%;
+      float: left;
+    }
+
+/*
+    .foto {
+      width: 100%;
+      height: 255px;
+    }
+*/
+    
+    .fotoMmbr {
+/*      position: static;*/
+      width: 100%;
+    }
+
+    .nama,
+    .nim,
+    .ttl {
+      font-size: 12px;
+      text-align: center;
+    }
+
+  </style>
 </head>
 
 <body>
-  Member
+  <!--Menu yang digunakan untuk memanggil panel widget yang id-nya "nav-panel"-->
+  <h3><a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a></h3>
+  <!--Panel yang muncul ketika menunya diklik-->
+  <div data-role="panel" data-position-fixed="true" data-display="push" data-theme="b" id="nav-panel">
+    <ul data-role="listview">
+      <!--      Jika ditekan akan menutup panel widget-->
+      <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </div>
+  <h3 class="container">Timeline Buku Angkatan Teknik Informatika</h3>
+  <div id="profil"></div>
+  <!--  <div class="prflMmbr">Halo</div>-->
+
+
 </body>
 
 </html>

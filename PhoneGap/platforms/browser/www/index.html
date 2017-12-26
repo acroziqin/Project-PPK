@@ -7,7 +7,24 @@
   <link rel="stylesheet" href="jquery/jquery.mobile-1.4.5.min.css" />
   <script src="jquery/jquery.min.js"></script>
   <script src="jquery/jquery.mobile-1.4.5.min.js"></script>
-  <title>Blank App</title>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var url = "http://localhost/project_ppk/json.php";
+      $.getJSON(url, function(result) {
+        console.log(result);
+        $.each(result, function(i, field) {
+          var keterangan  = field.keterangan;
+          var tanggal     = field.tanggal;
+          var coba = "Mencoba";
+          $("#tanggal").append(tanggal);
+          $("#listview").append(coba);
+          $(".keterangan").append(keterangan);
+        });
+      });
+    });
+  </script>
+  
+  <title>Home</title>
   <style>
     .container{
       text-align: center;
@@ -43,13 +60,16 @@
   </div>
   <h3 class="container">Timeline Buku Angkatan Teknik Informatika</h3>
   <img class="headline" src="img/1.jpg" alt="">
-  <p class="tanggal">Minggu, 22 Oktober 2017</p>
-  <p class="keterangan">ini post pertama</p>
+  <div id="tanggal"></div>
+  <ul class="list" id="listview">halo</ul>
+  <p class="keterangan"></p>
   
+<!--
   <script type="text/javascript" src="cordova.js"></script>
   <script>
     $("#mypanel").trigger("updatelayout");
   </script>
+-->
 
 </body>
 

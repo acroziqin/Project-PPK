@@ -7,11 +7,77 @@
   <link rel="stylesheet" href="jquery/jquery.mobile-1.4.5.min.css" />
   <script src="jquery/jquery.min.js"></script>
   <script src="jquery/jquery.mobile-1.4.5.min.js"></script>
-  <title>Blank App</title>
+  <script src="login.js">//memanggil script ajax</script>
+  <title>Login</title>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var url = "http://localhost/project_ppk/json.php";
+      $.getJSON(url, function(result) {
+        console.log(result);
+        $.each(result, function(i, field) {
+          var id = field.id;
+          var title = field.title;
+          var duration = field.duration;
+          var price = field.price;
+          $("#listview").append("<a class='item' href='form.html?id=" + id + "&title=" + title + "&duration=" + duration + "&price=" + price + "'><span class='item-note'>$" + price + "</span><h2>" + title + " </h2><p>" + duration + "</p></a>");
+        });
+      });
+    });
+
+  </script>
+  <style>
+    #menu {
+      position: absolute;
+      text-align: left;
+      /*      z-index: -100;*/
+      margin-left: 5px;
+    }
+
+  </style>
 </head>
 
 <body>
-  Login
+  <!--Menu yang digunakan untuk memanggil panel widget yang id-nya "nav-panel"-->
+  <h3><a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a></h3>
+  <!--Panel yang muncul ketika menunya diklik-->
+  <div data-role="panel" data-position-fixed="true" data-display="push" data-theme="b" id="nav-panel">
+    <ul data-role="listview">
+      <!--Jika ditekan akan menutup panel widget-->
+      <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </div>
+  <!--    <div id="loginPage" data-role="page">-->
+  <h1>
+    <center>Login</center>
+  </h1>
+  <!--    </div>-->
+  <!--
+    <div data-role="content">
+      <form id="loginForm">
+        <div data-role="fieldcontain" class="ui-hide-label">
+          <label for="username">Username:</label>
+          <input type="text" name="username" id="username" value="" placeholder="Username" />
+        </div>
+        <div data-role="fieldcontain" class="ui-hide-label">
+          <label for="password">Password:</label>
+          <input type="password" name="password" id="password" value="" placeholder="Password" />
+        </div>
+        <input type="submit" value="Submit" id="submitButton">
+      </form>
+    </div>
+-->
+  <div id="login">
+    <h3>LOGIN ADMINISTRATOR</h3>
+    <div id="inner">
+
+      <input type="text" class="txt" placeholder="Username anda" id="txt_username" />
+
+      <input type="password" class="txt" placeholder="Password anda" id="txt_password" />
+      <input type="button" class="btn" name="btn" id="btnLogin" onclick="check_login();" value="Login" />
+    </div>
+  </div>
 
 </body>
 
